@@ -1,0 +1,1170 @@
+<!DOCTYPE html><html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>استبيان OAEDC - Questionnaire OAEDC</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontsource-tajawal@5.0.0/index.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontsource-inter@5.0.0/index.min.css">
+<style>
+  :root {
+    --green-deep: #1a5c3a;
+    --green-mid: #2d8a5e;
+    --green-light: #4fb87e;
+    --green-pale: #e8f5ee;
+    --teal: #1a8a7d;
+    --teal-light: #e0f2f1;
+    --sand: #c9a96e;
+    --sand-light: #f5f0e6;
+    --earth: #8b6f47;
+    --dark: #1a2a24;
+    --gray-700: #374151;
+    --gray-500: #6b7280;
+    --gray-300: #d1d5db;
+    --gray-100: #f3f4f6;
+    --white: #ffffff;
+    --red: #dc2626;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 30px rgba(0,0,0,0.12);
+    --radius: 12px;
+    --radius-lg: 20px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Tajawal', 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--green-pale) 0%, var(--white) 50%, var(--sand-light) 100%);
+    min-height: 100vh;
+    color: var(--dark);
+    line-height: 1.7;
+  }
+
+  .banner {
+    width: 100%;
+    height: 280px;
+    background: url('https://image.qwenlm.ai/public_source/ef73be87-b255-4f83-a78a-04177eb633cb/1a77ad046-3616-45d2-809b-c2f7acf0edb8.png') center/cover no-repeat;
+    position: relative;
+    overflow: hidden;
+  }
+  .banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(26,92,58,0.15) 0%, rgba(26,92,58,0.55) 100%);
+  }
+  .banner-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px 40px;
+    z-index: 2;
+    color: white;
+  }
+  .banner-content h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  .banner-content p {
+    font-size: 1rem;
+    opacity: 0.95;
+    max-width: 700px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+
+  .container {
+    max-width: 860px;
+    margin: -40px auto 60px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 3;
+  }
+
+  .intro-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 36px 32px;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 30px;
+    border: 1px solid rgba(45,138,94,0.1);
+  }
+  .intro-card .lang-block {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px dashed var(--gray-300);
+  }
+  .intro-card .lang-block:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  .intro-card .lang-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  .lang-label.ar { background: var(--green-deep); color: white; }
+  .lang-label.fr { background: var(--teal); color: white; }
+
+  .intro-card p {
+    font-size: 0.95rem;
+    color: var(--gray-700);
+    line-height: 1.9;
+  }
+  .intro-card[dir="rtl"] p { text-align: right; }
+  .intro-card[dir="ltr"] p { text-align: left; }
+
+  .progress-wrapper {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 10px;
+    z-index: 10;
+  }
+  .progress-bar-bg {
+    flex: 1;
+    height: 10px;
+    background: var(--gray-100);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--green-mid), var(--teal));
+    border-radius: 10px;
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+  .progress-text {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--green-deep);
+    min-width: 50px;
+    text-align: center;
+  }
+  .progress-step {
+    font-size: 0.8rem;
+    color: var(--gray-500);
+  }
+
+  .section-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 36px 32px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 24px;
+    border: 1px solid rgba(45,138,94,0.08);
+    transition: box-shadow 0.3s ease;
+  }
+  .section-card:hover { box-shadow: var(--shadow-lg); }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid var(--green-pale);
+  }
+  .section-number {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--green-deep), var(--green-mid));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .section-title {
+    flex: 1;
+  }
+  .section-title h2 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--green-deep);
+    line-height: 1.5;
+  }
+  .section-title h2 .fr-title {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--teal);
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  .question {
+    margin-bottom: 28px;
+    padding: 20px;
+    border-radius: var(--radius);
+    background: var(--gray-100);
+    border-right: 4px solid var(--green-mid);
+    transition: all 0.3s ease;
+  }
+  .question:hover {
+    background: var(--green-pale);
+  }
+  .question.required .q-title::after {
+    content: ' *';
+    color: var(--red);
+    font-weight: 800;
+  }
+  .q-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+    line-height: 1.7;
+  }
+  .q-title .fr {
+    display: block;
+    font-size: 0.92rem;
+    color: var(--gray-700);
+    font-weight: 600;
+    margin-top: 4px;
+    direction: ltr;
+    text-align: left;
+  }
+  .q-help {
+    font-size: 0.82rem;
+    color: var(--gray-500);
+    margin-bottom: 14px;
+    font-style: italic;
+    line-height: 1.7;
+  }
+  .q-help .fr {
+    display: block;
+    direction: ltr;
+    text-align: left;
+    margin-top: 4px;
+  }
+
+  input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--gray-300);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background: var(--white);
+    transition: all 0.2s ease;
+    color: var(--dark);
+  }
+  input[type="text"]:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--green-mid);
+    box-shadow: 0 0 0 3px rgba(45,138,94,0.15);
+  }
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.8;
+  }
+
+  .radio-group, .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .radio-option, .checkbox-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--white);
+    border: 2px solid var(--gray-300);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .radio-option:hover, .checkbox-option:hover {
+    border-color: var(--green-light);
+    background: var(--green-pale);
+  }
+  .radio-option.selected, .checkbox-option.selected {
+    border-color: var(--green-mid);
+    background: var(--green-pale);
+  }
+  .radio-option input, .checkbox-option input {
+    margin-top: 4px;
+    accent-color: var(--green-mid);
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .radio-option label, .checkbox-option label {
+    cursor: pointer;
+    font-size: 0.93rem;
+    color: var(--gray-700);
+    line-height: 1.6;
+    flex: 1;
+  }
+  .radio-option label .fr, .checkbox-option label .fr {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    direction: ltr;
+    text-align: left;
+    margin-top: 2px;
+  }
+
+  .grid-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 10px;
+    font-size: 0.88rem;
+  }
+  .grid-table th {
+    background: var(--green-deep);
+    color: white;
+    padding: 10px 8px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  .grid-table th:first-child {
+    border-radius: 10px 0 0 0;
+    text-align: right;
+    padding-right: 14px;
+  }
+  .grid-table th:last-child {
+    border-radius: 0 10px 0 0;
+  }
+  .grid-table td {
+    padding: 10px 8px;
+    text-align: center;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .grid-table td:first-child {
+    text-align: right;
+    padding-right: 14px;
+    font-weight: 600;
+    color: var(--dark);
+    background: var(--gray-100);
+  }
+  .grid-table tr:hover td {
+    background: var(--green-pale);
+  }
+  .grid-table td:first-child:hover {
+    background: var(--gray-100);
+  }
+  .grid-table input[type="radio"] {
+    accent-color: var(--green-mid);
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+
+  .btn-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 14px 32px;
+    border: none;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--green-deep), var(--green-mid));
+    color: white;
+    box-shadow: 0 4px 14px rgba(45,138,94,0.3);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(45,138,94,0.4);
+  }
+  .btn-secondary {
+    background: var(--white);
+    color: var(--green-deep);
+    border: 2px solid var(--green-mid);
+  }
+  .btn-secondary:hover {
+    background: var(--green-pale);
+  }
+  .btn-submit {
+    background: linear-gradient(135deg, var(--teal), var(--green-deep));
+    color: white;
+    padding: 16px 48px;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 14px rgba(26,138,125,0.3);
+  }
+  .btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(26,138,125,0.4);
+  }
+
+  .hidden { display: none !important; }
+
+  .success-screen {
+    text-align: center;
+    padding: 60px 30px;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+  .success-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--green-mid), var(--teal));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-size: 2.5rem;
+    color: white;
+  }
+  .success-screen h2 {
+    color: var(--green-deep);
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+  }
+  .success-screen p {
+    color: var(--gray-700);
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 auto 16px;
+    line-height: 1.8;
+  }
+
+  .error-msg {
+    color: var(--red);
+    font-size: 0.82rem;
+    margin-top: 6px;
+    font-weight: 600;
+    display: none;
+  }
+  .error-msg.show { display: block; }
+
+  .char-count {
+    font-size: 0.78rem;
+    color: var(--gray-500);
+    text-align: left;
+    margin-top: 4px;
+    direction: ltr;
+  }
+
+  @media (max-width: 768px) {
+    .banner { height: 200px; }
+    .banner-content { padding: 20px; }
+    .banner-content h1 { font-size: 1.4rem; }
+    .container { padding: 0 12px; margin-top: -30px; }
+    .section-card { padding: 24px 18px; }
+    .question { padding: 16px 14px; }
+    .grid-table { font-size: 0.75rem; }
+    .grid-table th, .grid-table td { padding: 6px 4px; }
+    .progress-wrapper { padding: 14px 16px; }
+    .btn-row { flex-direction: column; }
+    .btn { width: 100%; justify-content: center; }
+  }
+
+  .fade-in {
+    animation: fadeIn 0.4s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .section-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gray-300);
+    transition: all 0.3s ease;
+  }
+  .section-dot.active {
+    background: var(--green-mid);
+    transform: scale(1.3);
+  }
+  .section-dot.completed {
+    background: var(--green-light);
+  }
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <div class="banner-content">
+    <h1>استبيان التأطير — استراتيجية الاتصال والهوية البصرية</h1>
+    <p>Questionnaire de cadrage — Stratégie de communication & Identité visuelle OAEDC</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Intro -->
+  <div class="intro-card" id="introCard">
+    <div class="lang-block" dir="rtl">
+      <span class="lang-label ar">العربية</span>
+      <p>يهدف هذا الاستبيان إلى التحضير لاستراتيجية الاتصال والهوية البصرية الجديدة للمنظمة الجزائرية للبيئة والتنمية والمواطنة، من خلال فهم أولوياتها، وطريقة عملها، وأنشطتها، والفئات التي تتوجه إليها، واحتياجاتها.<br><br>يرجى الإجابة انطلاقًا من تجربتكم والمعلومات المتوفرة لديكم، مع التمييز بين الإنجازات المحققة، والأنشطة الجارية، والمشاريع المقترحة. يمكنكم الإجابة بالعربية أو بالفرنسية.<br><br>لا يُطلب منكم تقديم الاسم أو البريد الإلكتروني أو رقم الهاتف. يرجى عدم إدراج بيانات شخصية في الإجابات أو الوثائق المرفقة. ستُستخدم الإجابات لإعداد التشخيص والاستراتيجية.</p>
+    </div>
+    <div class="lang-block" dir="ltr">
+      <span class="lang-label fr">Français</span>
+      <p>Ce questionnaire prépare la stratégie de communication et la nouvelle identité visuelle de l'OAEDC. Il vise à mieux comprendre ses priorités, son fonctionnement, ses actions, ses publics et ses besoins.<br><br>Merci de répondre à partir de votre expérience et des informations disponibles, en distinguant les réalisations, les activités en cours et les projets envisagés. Vous pouvez répondre en arabe ou en français.<br><br>Aucun nom, courriel ou numéro de téléphone n'est demandé. Merci de ne pas inclure de données personnelles dans vos réponses ou dans les documents transmis. Les réponses serviront au diagnostic et à la préparation de la stratégie.</p>
+    </div>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-wrapper" id="progressWrapper">
+    <span class="progress-step" id="progressStep">١ / ٨</span>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progressFill"></div>
+    </div>
+    <span class="progress-text" id="progressPercent">0%</span>
+  </div>
+
+  <div class="section-indicator" id="sectionDots"></div>
+
+  <form id="oedcForm" novalidate>
+
+    <!-- SECTION 1 -->
+    <div class="section-card fade-in" data-section="1">
+      <div class="section-header">
+        <div class="section-number">١</div>
+        <div class="section-title">
+          <h2>إطار مشاركتكم<span class="fr-title">1. Votre cadre de participation</span></h2>
+        </div>
+      </div>
+
+      <div class="question required">
+        <div class="q-title">. بأي صفة تشاركون في هذا الاستبيان؟<span class="fr">1. À quel titre participez-vous à ce questionnaire ? *</span></div>
+        <div class="radio-group" data-name="q1" data-required="true">
+          <div class="radio-option"><input type="radio" name="q1" id="q1_1" value="direction_nationale"><label for="q1_1">القيادة الوطنية<span class="fr">Direction nationale</span></label></div>
+          <div class="radio-option"><input type="radio" name="q1" id="q1_2" value="representation_wilaya"><label for="q1_2">ممثلية ولائية<span class="fr">Représentation wilayale</span></label></div>
+          <div class="radio-option"><input type="radio" name="q1" id="q1_3" value="representation_intl"><label for="q1_3">ممثلية دولية<span class="fr">Représentation internationale</span></label></div>
+          <div class="radio-option"><input type="radio" name="q1" id="q1_4" value="commission"><label for="q1_4">لجنة أو برنامج<span class="fr">Commission ou programme</span></label></div>
+          <div class="radio-option"><input type="radio" name="q1" id="q1_5" value="membre"><label for="q1_5">عضو أو متطوع<span class="fr">Membre ou bénévole</span></label></div>
+          <div class="radio-option"><input type="radio" name="q1" id="q1_6" value="autre"><label for="q1_6">صفة أخرى<span class="fr">Autre</span></label></div>
+        </div>
+        <div class="error-msg" id="err_q1">يرجى اختيار إجابة / Veuillez sélectionner une réponse</div>
+      </div>
+
+      <div class="question">
+        <div class="q-title">٢. ما الهيكل الذي تمثلونه؟<span class="fr">2. Quelle structure représentez-vous ?</span></div>
+        <div class="q-help">يرجى تحديد اللجنة، أو الولاية، أو البلد والمدينة المعنيين فقط، دون ذكر أسماء الأشخاص.<span class="fr">Indiquez uniquement la commission, la wilaya ou le pays et la ville concernés, sans nom de personne.</span></div>
+        <input type="text" name="q2" placeholder="...">
+      </div>
+
+      <div class="question required">
+        <div class="q-title">٣. ما النطاق الذي تتعلق به إجاباتكم؟<span class="fr">3. Sur quel périmètre portent vos réponses ? *</span></div>
+        <div class="radio-group" data-name="q3" data-required="true">
+          <div class="radio-option"><input type="radio" name="q3" id="q3_1" value="ensemble"><label for="q3_1">المنظمة ككل<span class="fr">L'ensemble de l'organisation</span></label></div>
+          <div class="radio-option"><input type="radio" name="q3" id="q3_2" value="representation"><label for="q3_2">ممثليتي<span class="fr">Ma représentation</span></label></div>
+          <div class="radio-option"><input type="radio" name="q3" id="q3_3" value="commission"><label for="q3_3">لجنتي أو برنامجي<span class="fr">Ma commission ou mon programme</span></label></div>
+          <div class="radio-option"><input type="radio" name="q3" id="q3_4" value="personnelle"><label for="q3_4">تجربتي الشخصية داخل المنظمة<span class="fr">Mon expérience personnelle au sein de l'organisation</span></label></div>
+        </div>
+        <div class="error-msg" id="err_q3">يرجى اختيار إجابة / Veuillez sélectionner une réponse</div>
+      </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="section-card fade-in" data-section="2">
+      <div class="section-header">
+        <div class="section-number">٢</div>
+        <div class="section-title">
+          <h2>الرسالة والأولويات والصعوبات<span class="fr-title">2. Mission, priorités et difficultés</span></h2>
+        </div>
+      </div>
+
+      <div class="question required">
+        <div class="q-title">. كيف تشرحون رسالة المنظمة في جملة أو جملتين؟<span class="fr">4. En une ou deux phrases, comment expliquez-vous la mission de l'OAEDC ? *</span></div>
+        <textarea name="q4" required placeholder="..."></textarea>
+        <div class="error-msg" id="err_q4">يرجى الإجابة على هذا السؤال / Veuillez répondre à cette question</div>
+      </div>
+
+      <div class="question required">
+        <div class="q-title">. الأولويات الثلاث<span class="fr">5. Vos trois priorités *</span></div>
+        <input type="text" name="q5_1" placeholder="الأولوية الأولى / Priorité 1 *" style="margin-bottom:10px" required>
+        <input type="text" name="q5_2" placeholder="الأولوية الثانية / Priorité 2 *" style="margin-bottom:10px" required>
+        <input type="text" name="q5_3" placeholder="الأولوية الثالثة / Priorité 3 *" required>
+        <div class="error-msg" id="err_q5">يرجى ملء الأولويات الثلاث / Veuillez remplir les trois priorités</div>
+      </div>
+
+      <div class="question">
+        <div class="q-title">٦. ما الذي يميز المنظمة، عمليًا، عن غيرها من المنظمات؟<span class="fr">6. Selon vous, qu'est-ce qui distingue concrètement l'OAEDC des autres organisations ?</span></div>
+        <div class="q-help">يُرجى، إن أمكن، ذكر خبرة أو منهج عمل أو إنجاز أو قدرة خاصة.<span class="fr">Mentionnez si possible une compétence, une méthode, une réalisation ou une capacité particulière.</span></div>
+        <textarea name="q6" placeholder="..."></textarea>
+      </div>
+
+      <div class="question required">
+        <div class="q-title">٧. ما أبرز الصعوبات التي تحد حاليًا من نشاطكم؟<span class="fr">7. Quelles sont les principales difficultés qui limitent actuellement votre action ? *</span></div>
+        <div class="q-help">اختيار ثلاث إجابات كحد أقصى<span class="fr">Choisir trois réponses au maximum</span></div>
+        <div class="checkbox-group" data-name="q7" data-max="3" data-required="true">
+          <div class="checkbox-option"><input type="checkbox" name="q7" id="q7_1" value="financier"><label for="q7_1">عدم كفاية الموارد المالية<span class="fr">Moyens financiers insuffisants</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q7" id="q7_2" value="disponibilite"><label for="q7_2">محدودية تفرغ أعضاء الفريق<span class="fr">Disponibilité limitée des équipes</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q7" id="q7_3" value="benevoles"><label for="q7_3">صعوبات في تعبئة المتطوعين<span class="fr">Difficultés à mobiliser les bénévoles</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q7" id="q7_4" value="coordination"><label for="q7_4">ضعف التنسيق الداخلي<span class="fr">Coordination interne insuffisante</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q7" id="q7_5" value="partenariats"><label for="q7_5">صعوبات في تطوير الشراكات<span class="fr">Difficultés à développer des partenariats</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q7" id="q7_6" value="visibilite"><label for="q7_6">ضعف التعريف بالمنظمة وأنشطتها<span class="fr">Manque de visibilité</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q7" id="q7_7" value="outils"><label for="q7_7">نقص الأدوات أو المهارات<span class="fr">Manque d'outils ou de compétences</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q7" id="q7_8" value="documentation"><label for="q7_8">صعوبات في توثيق النتائج<span class="fr">Difficultés à documenter les résultats</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q7" id="q7_9" value="autres"><label for="q7_9">صعوبات أخرى، يرجى التوضيح<span class="fr">Autres, précisez</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q7" id="q7_10" value="impossible"><label for="q7_10">لا يمكن التقييم<span class="fr">Impossible à évaluer</span></label></div>
+        </div>
+        <div class="error-msg" id="err_q7">يرجى اختيار إجابة واحدة على الأقل (3 كحد أقصى) / Veuillez choisir au moins une réponse (max 3)</div>
+      </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="section-card fade-in" data-section="3">
+      <div class="section-header">
+        <div class="section-number">٣</div>
+        <div class="section-title">
+          <h2>الأنشطة والمشاريع والنتائج<span class="fr-title">3. Actions, projets et résultats</span></h2>
+        </div>
+      </div>
+
+      <div class="question required">
+        <div class="q-title">٨. ما أهم ثلاثة أنشطة أنجزتموها خلال الاثني عشر شهرًا الماضية؟<span class="fr">8. Quelles sont vos trois actions les plus significatives au cours des douze derniers mois ? *</span></div>
+        <div class="q-help">لكل نشاط، حددوا: العنوان، التاريخ والمكان، الفئة المستهدفة، الدور الفعلي للمنظمة، الهيئات الشريكة. (أو اذكروا "لم تُنجز أنشطة" / "المعلومات غير متاحة").<span class="fr">Pour chaque action, précisez : Intitulé, Date et lieu, Public concerné, Rôle exact de l'OAEDC, Organismes partenaires. (Ou indiquez "Aucune action réalisée" / "Informations non disponibles").</span></div>
+        <textarea name="q8" required placeholder="..."></textarea>
+        <div class="error-msg" id="err_q8">يرجى الإجابة على هذا السؤال / Veuillez répondre à cette question</div>
+      </div>
+
+      <div class="question">
+        <div class="q-title">٩. ما النتائج التي يمكنكم توثيقها لهذه الأنشطة؟<span class="fr">9. Quels résultats pouvez-vous documenter pour ces actions ?</span></div>
+        <div class="q-help">حددوا الأرقام المتاحة، وطريقة العد، والتغييرات الملاحظة. ميزوا بين النتائج المحققة والتقديرات.<span class="fr">Précisez les nombres disponibles, la méthode de comptage et les changements observés. Distinguez les résultats vérifiés des estimations.</span></div>
+        <textarea name="q9" placeholder="..."></textarea>
+      </div>
+
+      <div class="question">
+        <div class="q-title">١٠. ما المشاريع التي تخططون لها خلال الأشهر الستة إلى الاثني عشر المقبلة؟<span class="fr">10. Quels projets prévoyez-vous dans les six à douze prochains mois ?</span></div>
+        <div class="q-help">لكل مشروع، حددوا الهدف، الفئة المستهدفة، وحالة التقدم: فكرة، تحضير، بحث عن تمويل، أو انطلاق مؤكد.<span class="fr">Pour chaque projet, précisez son objectif, le public concerné et son état d'avancement : idée, préparation, recherche de financement ou lancement confirmé.</span></div>
+        <textarea name="q10" placeholder="..."></textarea>
+      </div>
+
+      <div class="question">
+        <div class="q-title">١١. ما الوثائق التي يمكنكم مشاركتها لدعم هذا التشخيص؟<span class="fr">11. Quels documents pouvez-vous partager pour éclairer ce diagnostic ?</span></div>
+        <div class="q-help">يرجى الإشارة إلى الوثائق المخصصة للاستخدام الداخلي وإزالة البيانات الشخصية قبل الإرسال.<span class="fr">Merci de signaler les documents réservés à un usage interne et de retirer les données personnelles avant transmission.</span></div>
+        <div class="checkbox-group" data-name="q11" data-max="99">
+          <div class="checkbox-option"><input type="checkbox" name="q11" id="q11_1" value="rapports"><label for="q11_1">تقارير النشاط<span class="fr">Rapports d'activité</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q11" id="q11_2" value="fiches"><label for="q11_2">بطاقات المشاريع أو حصائلها<span class="fr">Fiches ou bilans de projets</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q11" id="q11_3" value="conventions"><label for="q11_3">اتفاقيات الشراكة<span class="fr">Conventions de partenariat</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q11" id="q11_4" value="articles"><label for="q11_4">مقالات أو تغطيات إعلامية<span class="fr">Articles ou reportages</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q11" id="q11_5" value="photos"><label for="q11_5">صور أو فيديوهات قابلة للاستخدام<span class="fr">Photos ou vidéos utilisables</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q11" id="q11_6" value="presentations"><label for="q11_6">عروض تقديمية أو مطويات<span class="fr">Présentations ou brochures</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q11" id="q11_7" value="aucun"><label for="q11_7">لا تتوفر وثائق حاليًا<span class="fr">Aucun document disponible actuellement</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q11" id="q11_8" value="autres"><label for="q11_8">وثائق أخرى<span class="fr">Autres</span></label></div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-title">١١ مكرر. روابط الوثائق المشار إليها<span class="fr">11.bis. Liens vers vos documents partagés (Google Drive, Dropbox, Cloud)</span></div>
+        <div class="q-help">الصقوا هنا روابط الوصول إلى الملفات (بدون بيانات شخصية).<span class="fr">Collez ici les liens d'accès aux fichiers (sans données nominatives).</span></div>
+        <input type="text" name="q11bis" placeholder="https://...">
+      </div>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="section-card fade-in" data-section="4">
+      <div class="section-header">
+        <div class="section-number">٤</div>
+        <div class="section-title">
+          <h2>الفئات المعنية والشراكات<span class="fr-title">4. Publics et partenariats</span></h2>
+        </div>
+      </div>
+
+      <div class="question required">
+        <div class="q-title">١٢. ما الفئات التي ترغبون في إشراكها على سبيل الأولوية؟<span class="fr">12. Quels publics souhaitez-vous mobiliser en priorité ? *</span></div>
+        <div class="q-help">اختيار ثلاث إجابات كحد أقصى<span class="fr">Choisir trois réponses au maximum</span></div>
+        <div class="checkbox-group" data-name="q12" data-max="3" data-required="true">
+          <div class="checkbox-option"><input type="checkbox" name="q12" id="q12_1" value="habitants"><label for="q12_1">السكان والمواطنون<span class="fr">Habitants et citoyens</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q12" id="q12_2" value="jeunes"><label for="q12_2">الشباب والطلبة<span class="fr">Jeunes et étudiants</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q12" id="q12_3" value="femmes"><label for="q12_3">النساء وصاحبات المشاريع<span class="fr">Femmes et porteuses de projets</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q12" id="q12_4" value="ecoles"><label for="q12_4">المؤسسات التربوية والمربون<span class="fr">Établissements scolaires et éducateurs</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q12" id="q12_5" value="communes"><label for="q12_5">البلديات والمؤسسات العمومية<span class="fr">Communes et institutions publiques</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q12" id="q12_6" value="entreprises"><label for="q12_6">المؤسسات والمتعاملون الاقتصاديون<span class="fr">Entreprises et acteurs économiques</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q12" id="q12_7" value="agriculteurs"><label for="q12_7">الفلاحون والفاعلون في المناطق الريفية<span class="fr">Agriculteurs et acteurs ruraux</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q12" id="q12_8" value="associations"><label for="q12_8">الجمعيات<span class="fr">Associations</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q12" id="q12_9" value="universites"><label for="q12_9">الجامعات والخبراء<span class="fr">Universités et experts</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q12" id="q12_10" value="diaspora"><label for="q12_10">الجالية الجزائرية بالخارج<span class="fr">Communauté algérienne à l'étranger</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q12" id="q12_11" value="internationaux"><label for="q12_11">الشركاء الدوليون<span class="fr">Partenaires internationaux</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q12" id="q12_12" value="medias"><label for="q12_12">وسائل الإعلام<span class="fr">Médias</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q12" id="q12_13" value="autres"><label for="q12_13">فئات أخرى<span class="fr">Autres</span></label></div>
+        </div>
+        <div class="error-msg" id="err_q12">يرجى اختيار إجابة واحدة على الأقل (3 كحد أقصى) / Veuillez choisir au moins une réponse (max 3)</div>
+      </div>
+
+      <div class="question required">
+        <div class="q-title">١٣. ما الذي تتوقعونه عمليًا من هذه الفئات؟<span class="fr">13. Qu'attendez-vous concrètement de ces publics ? *</span></div>
+        <div class="q-help">أمثلة: المشاركة في نشاط، الانضمام، التطوع، تقديم خبرة، تمويل مشروع، أو إبرام شراكة.<span class="fr">Exemples : participer à une action, adhérer, devenir bénévole, apporter une expertise, financer un projet ou conclure un partenariat.</span></div>
+        <textarea name="q13" required placeholder="..."></textarea>
+        <div class="error-msg" id="err_q13">يرجى الإجابة على هذا السؤال / Veuillez répondre à cette question</div>
+      </div>
+
+      <div class="question">
+        <div class="q-title">١٤. ما الأسئلة أو التوقعات أو الانتقادات التي ترد إليكم غالبًا من هذه الفئات؟<span class="fr">14. Quelles questions, attentes ou critiques ces publics vous adressent-ils le plus souvent ?</span></div>
+        <textarea name="q14" placeholder="..."></textarea>
+      </div>
+
+      <div class="question">
+        <div class="q-title">١٥. ما أبرز الهيئات الشريكة لكم حاليًا؟<span class="fr">15. Quels sont vos principaux organismes partenaires actuels ?</span></div>
+        <div class="q-help">لكل هيئة، حددوا ما إذا كانت هناك اتفاقية، أو عمل مشترك، أو اتصال استكشافي. لا تذكروا بيانات الاتصال بالأشخاص.<span class="fr">Pour chacun, précisez s'il existe une convention, une action commune ou un contact exploratoire. Ne mentionnez pas les coordonnées des personnes.</span></div>
+        <textarea name="q15" placeholder="..."></textarea>
+      </div>
+    </div>
+
+    <!-- SECTION 5 -->
+    <div class="section-card fade-in" data-section="5">
+      <div class="section-header">
+        <div class="section-number">٥</div>
+        <div class="section-title">
+          <h2>الاتصال الحالي<span class="fr-title">5. Communication actuelle</span></h2>
+        </div>
+      </div>
+
+      <div class="question required">
+        <div class="q-title">١٦. ما الوسائل التي تستخدمونها حاليًا للاتصال والتعريف بأنشطتكم؟<span class="fr">16. Quels moyens utilisez-vous actuellement pour communiquer ? *</span></div>
+        <div class="checkbox-group" data-name="q16" data-max="99" data-required="true">
+          <div class="checkbox-option"><input type="checkbox" name="q16" id="q16_1" value="facebook"><label for="q16_1">Facebook</label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q16" id="q16_2" value="instagram"><label for="q16_2">Instagram</label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q16" id="q16_3" value="linkedin"><label for="q16_3">LinkedIn</label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q16" id="q16_4" value="tiktok"><label for="q16_4">TikTok</label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q16" id="q16_5" value="youtube"><label for="q16_5">YouTube</label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q16" id="q16_6" value="whatsapp"><label for="q16_6">WhatsApp</label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q16" id="q16_7" value="site"><label for="q16_7">موقع إلكتروني<span class="fr">Site internet</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q16" id="q16_8" value="email"><label for="q16_8">البريد الإلكتروني<span class="fr">Courriel</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q16" id="q16_9" value="presse"><label for="q16_9">الصحافة أو الإذاعة أو التلفزيون<span class="fr">Presse, radio ou télévision</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q16" id="q16_10" value="affiches"><label for="q16_10">الملصقات والمطبوعات<span class="fr">Affiches et supports imprimés</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q16" id="q16_11" value="rencontres"><label for="q16_11">اللقاءات الميدانية<span class="fr">Rencontres de proximité</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q16" id="q16_12" value="aucun"><label for="q16_12">لا توجد وسيلة منتظمة<span class="fr">Aucun canal régulier</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q16" id="q16_13" value="autres"><label for="q16_13">وسائل أخرى<span class="fr">Autres</span></label></div>
+        </div>
+        <div class="error-msg" id="err_q16">يرجى اختيار إجابة واحدة على الأقل / Veuillez choisir au moins une réponse</div>
+      </div>
+
+      <div class="question">
+        <div class="q-title">١٦ مكرر. روابط حسابات وصفحات المنظمة أو الممثلية<span class="fr">16.bis. Liens des comptes et pages de l'organisation ou de la représentation</span></div>
+        <input type="text" name="q16bis" placeholder="https://...">
+      </div>
+
+      <div class="question">
+        <div class="q-title">١٧. كيف تُوزَّع مهام إعداد المحتوى واعتماده ونشره؟<span class="fr">17. Comment sont réparties la préparation, la validation et la publication des contenus ?</span></div>
+        <div class="q-help">حددوا الوظائف أو الفرق المعنية، وعدد الأشخاص وتفرغهم، دون ذكر أسماء.<span class="fr">Précisez les fonctions ou les équipes concernées, le nombre de personnes et leur disponibilité, sans indiquer de noms.</span></div>
+        <textarea name="q17" placeholder="..."></textarea>
+      </div>
+
+      <div class="question">
+        <div class="q-title">١٨. ما المحتويات أو الأنشطة الاتصالية التي حققت أفضل النتائج؟<span class="fr">18. Quels contenus ou actions de communication ont donné les meilleurs résultats ?</span></div>
+        <div class="q-help">اذكروا العناصر المتاحة: الطلبات received، التسجيلات، المتطوعين المجندين، طلبات الشركاء، أو الإحصائيات.<span class="fr">Indiquez les éléments disponibles : demandes reçues, inscriptions, bénévoles mobilisés, sollicitations de partenaires ou statistiques.</span></div>
+        <textarea name="q18" placeholder="..."></textarea>
+      </div>
+
+      <div class="question">
+        <div class="q-title">١٩. كيف يمكن للشخص المهتم الانضمام إليكم؟<span class="fr">19. Comment une personne intéressée peut-elle vous rejoindre ?</span></div>
+        <div class="q-help">صفوا خطوات الانضمام، التطوع، أو الاتصال، بالإضافة إلى الوظيفة أو الفريق المكلف بالمتابعة.<span class="fr">Décrivez les étapes d'adhésion, de bénévolat ou de prise de contact, ainsi que la fonction ou l'équipe chargée du suivi.</span></div>
+        <textarea name="q19" placeholder="..."></textarea>
+      </div>
+
+      <div class="question required">
+        <div class="q-title">٢٠. كيف تقيّمون سير الاتصال الداخلي؟<span class="fr">20. Comment évaluez-vous le fonctionnement de la communication interne ? *</span></div>
+        <table class="grid-table">
+          <thead>
+            <tr>
+              <th>المعيار / Critère</th>
+              <th>ضعيف جدًا<br><small>Très insuffisant</small></th>
+              <th>ضعيف<br><small>Insuffisant</small></th>
+              <th>مُرضٍ<br><small>Satisfaisant</small></th>
+              <th>مُرضٍ جدًا<br><small>Très satisfaisant</small></th>
+              <th>لا يمكن التقييم<br><small>Impossible à évaluer</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>وضوح التوجيهات<br><small>Clarté des orientations</small></td>
+              <td><input type="radio" name="g20_1" value="1"></td><td><input type="radio" name="g20_1" value="2"></td><td><input type="radio" name="g20_1" value="3"></td><td><input type="radio" name="g20_1" value="4"></td><td><input type="radio" name="g20_1" value="0"></td></tr>
+            <tr><td>تداول المعلومات<br><small>Circulation de l'information</small></td>
+              <td><input type="radio" name="g20_2" value="1"></td><td><input type="radio" name="g20_2" value="2"></td><td><input type="radio" name="g20_2" value="3"></td><td><input type="radio" name="g20_2" value="4"></td><td><input type="radio" name="g20_2" value="0"></td></tr>
+            <tr><td>التنسيق بين المقر والممثليات<br><small>Coordination siège/représentations</small></td>
+              <td><input type="radio" name="g20_3" value="1"></td><td><input type="radio" name="g20_3" value="2"></td><td><input type="radio" name="g20_3" value="3"></td><td><input type="radio" name="g20_3" value="4"></td><td><input type="radio" name="g20_3" value="0"></td></tr>
+            <tr><td>تبادل التجارب بين الممثليات<br><small>Partage entre représentations</small></td>
+              <td><input type="radio" name="g20_4" value="1"></td><td><input type="radio" name="g20_4" value="2"></td><td><input type="radio" name="g20_4" value="3"></td><td><input type="radio" name="g20_4" value="4"></td><td><input type="radio" name="g20_4" value="0"></td></tr>
+            <tr><td>آجال اعتماد المحتوى<br><small>Délais de validation</small></td>
+              <td><input type="radio" name="g20_5" value="1"></td><td><input type="radio" name="g20_5" value="2"></td><td><input type="radio" name="g20_5" value="3"></td><td><input type="radio" name="g20_5" value="4"></td><td><input type="radio" name="g20_5" value="0"></td></tr>
+            <tr><td>إتاحة المواد والأدوات اللازمة<br><small>Accès aux supports utiles</small></td>
+              <td><input type="radio" name="g20_6" value="1"></td><td><input type="radio" name="g20_6" value="2"></td><td><input type="radio" name="g20_6" value="3"></td><td><input type="radio" name="g20_6" value="4"></td><td><input type="radio" name="g20_6" value="0"></td></tr>
+          </tbody>
+        </table>
+        <div class="error-msg" id="err_q20">يرجى تقييم جميع المعايير / Veuillez évaluer tous les critères</div>
+      </div>
+
+      <div class="question">
+        <div class="q-title">٢٠ مكرر. ما التحسين الذي ترونه ذا أولوية؟<span class="fr">20.bis. Quelle amélioration serait prioritaire pour la communication interne ?</span></div>
+        <input type="text" name="q20bis" placeholder="...">
+      </div>
+    </div>
+
+    <!-- SECTION 6 -->
+    <div class="section-card fade-in" data-section="6">
+      <div class="section-header">
+        <div class="section-number">٦</div>
+        <div class="section-title">
+          <h2>الهوية البصرية الجديدة والاحتياجات<span class="fr-title">6. Nouvelle identité visuelle et besoins</span></h2>
+        </div>
+      </div>
+
+      <div class="question required">
+        <div class="q-title">٢١. ما الكلمات التي ينبغي أن تعبّر عن الصورة المستقبلية للمنظمة؟<span class="fr">21. Quels mots devraient caractériser la future image de l'OAEDC ? *</span></div>
+        <div class="q-help">اختيار ثلاث إجابات كحد أقصى<span class="fr">Choisir trois réponses au maximum</span></div>
+        <div class="checkbox-group" data-name="q21" data-max="3" data-required="true">
+          <div class="checkbox-option"><input type="checkbox" name="q21" id="q21_1" value="proximite"><label for="q21_1">القرب من المواطنين<span class="fr">Proximité</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q21" id="q21_2" value="credibilite"><label for="q21_2">المصداقية<span class="fr">Crédibilité</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q21" id="q21_3" value="competence"><label for="q21_3">الكفاءة<span class="fr">Compétence</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q21" id="q21_4" value="solidarite"><label for="q21_4">التضامن<span class="fr">Solidarité</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q21" id="q21_5" value="participation"><label for="q21_5">المشاركة<span class="fr">Participation</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q21" id="q21_6" value="transparence"><label for="q21_6">الشفافية<span class="fr">Transparence</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q21" id="q21_7" value="dynamisme"><label for="q21_7">الحيوية<span class="fr">Dynamisme</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q21" id="q21_8" value="innovation"><label for="q21_8">الابتكار<span class="fr">Innovation</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q21" id="q21_9" value="ancrage"><label for="q21_9">الارتباط بالهوية والواقع الجزائري<span class="fr">Ancrage algérien</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q21" id="q21_10" value="ouverture"><label for="q21_10">الانفتاح الدولي<span class="fr">Ouverture internationale</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q21" id="q21_11" value="autres"><label for="q21_11">كلمات أخرى<span class="fr">Autres</span></label></div>
+        </div>
+        <div class="error-msg" id="err_q21">يرجى اختيار إجابة واحدة على الأقل (3 كحد أقصى) / Veuillez choisir au moins une réponse (max 3)</div>
+      </div>
+
+      <div class="question required">
+        <div class="q-title">٢٢.١. ما الذي ينبغي أن يعبّر عنه الشعار البصري الجديد؟<span class="fr">22.1. Que devrait exprimer le nouveau logo ? *</span></div>
+        <div class="q-help">أفكار، رموز، ألوان، أو مراجع ثقافية مع شرح معناها.<span class="fr">Idées, symboles, couleurs ou références culturelles en expliquant leur sens.</span></div>
+        <textarea name="q22_1" required placeholder="..."></textarea>
+        <div class="error-msg" id="err_q22_1">يرجى الإجابة على هذا السؤال / Veuillez répondre à cette question</div>
+      </div>
+
+      <div class="question required">
+        <div class="q-title">٢٢.٢. وما الذي ينبغي تجنبه في الشعار الجديد؟<span class="fr">22.2. Que devrait éviter le nouveau logo ? *</span></div>
+        <textarea name="q22_2" required placeholder="..."></textarea>
+        <div class="error-msg" id="err_q22_2">يرجى الإجابة على هذا السؤال / Veuillez répondre à cette question</div>
+      </div>
+
+      <div class="question">
+        <div class="q-title">٢٣. ما الاحتياجات التي ينبغي مراعاتها في الهوية البصرية الجديدة؟<span class="fr">23. Quels besoins faut-il prendre en compte dans la nouvelle identité visuelle ?</span></div>
+        <div class="q-help">حددوا الاحتياجات المتعلقة بالعربية والفرنسية والأمازيغية، بالإضافة إلى الوسائط ذات الأولوية (شبكات التواصل، الوثائق، اللافتات، الملابس، الفعاليات).<span class="fr">Précisez les besoins liés à l'arabe, au français et à l'amazigh, ainsi que les supports prioritaires (réseaux sociaux, documents, enseignes, vêtements, événements).</span></div>
+        <textarea name="q23" placeholder="..."></textarea>
+      </div>
+
+      <div class="question">
+        <div class="q-title">٢٤. ما المهارات أو الأدوات التي تساعدكم على تحسين الاتصال؟<span class="fr">24. Quelles compétences ou quels outils vous aideraient à mieux communiquer ?</span></div>
+        <div class="q-help">اختيار ثلاث إجابات كحد أقصى<span class="fr">Choisir trois réponses au maximum</span></div>
+        <div class="checkbox-group" data-name="q24" data-max="3">
+          <div class="checkbox-option"><input type="checkbox" name="q24" id="q24_1" value="redaction"><label for="q24_1">الكتابة والتحرير<span class="fr">Rédaction</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q24" id="q24_2" value="reseaux"><label for="q24_2">إدارة شبكات التواصل الاجتماعي<span class="fr">Gestion des réseaux sociaux</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q24" id="q24_3" value="photo"><label for="q24_3">التصوير وإنتاج الفيديو<span class="fr">Photo et vidéo</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q24" id="q24_4" value="modeles"><label for="q24_4">قوالب تصميم جاهزة للاستخدام<span class="fr">Modèles graphiques prêts à utiliser</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q24" id="q24_5" value="medias"><label for="q24_5">العلاقات مع وسائل الإعلام<span class="fr">Relations avec les médias</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q24" id="q24_6" value="parole"><label for="q24_6">التحدث أمام الجمهور<span class="fr">Prise de parole</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q24" id="q24_7" value="campagnes"><label for="q24_7">تنظيم الحملات<span class="fr">Organisation de campagnes</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q24" id="q24_8" value="mesure"><label for="q24_8">قياس النتائج<span class="fr">Mesure des résultats</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q24" id="q24_9" value="coordination"><label for="q24_9">التنسيق الداخلي<span class="fr">Coordination interne</span></label></div>
+          <div class="checkbox-option"><input type="checkbox" name="q24" id="q24_10" value="autres"><label for="q24_10">احتياجات أخرى<span class="fr">Autres</span></label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 7 -->
+    <div class="section-card fade-in" data-section="7">
+      <div class="section-header">
+        <div class="section-number">٧</div>
+        <div class="section-title">
+          <h2>أسئلة إضافية للقيادة الوطنية<span class="fr-title">7. Questions complémentaires pour la direction nationale</span></h2>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-title">٢٥. هل يمكنكم تأكيد تركيبة الشبكة المُعلن عنها؟<span class="fr">25. Pouvez-vous confirmer la composition du réseau annoncé ?</span></div>
+        <div class="q-help">بالنسبة للممثليات الولائية 54 والممثليات الدولية 7، حددوا موقعها، وضعها، مستوى نشاطها ومهمتها (بدون بيانات شخصية).<span class="fr">Pour les 54 représentations wilayales et les 7 représentations internationales, précisez leur localisation, statut, niveau d'activité et mission (sans données personnelles).</span></div>
+        <textarea name="q25" placeholder="..."></textarea>
+      </div>
+
+      <div class="question">
+        <div class="q-title">٢٦.١. ما وضع الوثيقة الاستراتيجية والأهداف المحددة لخمس سنوات؟<span class="fr">26.1. Quel est le statut du texte stratégique et des objectifs à cinq ans ?</span></div>
+        <div class="radio-group" data-name="q26_1">
+          <div class="radio-option"><input type="radio" name="q26_1" id="q26_1_1" value="valides"><label for="q26_1_1">معتمدة<span class="fr">Validés</span></label></div>
+          <div class="radio-option"><input type="radio" name="q26_1" id="q26_1_2" value="discussion"><label for="q26_1_2">قيد المناقشة<span class="fr">En cours de discussion</span></label></div>
+          <div class="radio-option"><input type="radio" name="q26_1" id="q26_1_3" value="propositions"><label for="q26_1_3">مقترحات لم تُعتمد بعد<span class="fr">Propositions non encore validées</span></label></div>
+          <div class="radio-option"><input type="radio" name="q26_1" id="q26_1_4" value="preciser"><label for="q26_1_4">يحتاج إلى توضيح<span class="fr">À préciser</span></label></div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-title">٢٦.٢. توضيحات حول الوثيقة الاستراتيجية<span class="fr">26.2. Commentaires sur le texte stratégique</span></div>
+        <div class="q-help">الفترة المعنية، هياكل التنفيذ، الوسائل المخططة، وطرق القياس.<span class="fr">Période concernée, structures de mise en œuvre, moyens prévus et modalités de mesure.</span></div>
+        <textarea name="q26_2" placeholder="..."></textarea>
+      </div>
+
+      <div class="question">
+        <div class="q-title">٢٧. كيف يُترجم الالتزام بالمواصفة ISO 26000 حاليًا إلى ممارسات فعلية؟<span class="fr">27. Comment l'engagement relatif à ISO 26000 se traduit-il actuellement ?</span></div>
+        <div class="q-help">اذكروا القرارات المتخذة، الهيكل المكلف بالمتابعة، الإجراءات المنجزة، والوثائق المتاحة.<span class="fr">Indiquez les décisions prises, la structure chargée du suivi, les actions réalisées et les documents disponibles.</span></div>
+        <textarea name="q27" placeholder="..."></textarea>
+      </div>
+
+      <div class="question required">
+        <div class="q-title">٢٨. ما النتائج التي تتوقعونها من مهمة إعداد استراتيجية الاتصال وتصميم الهوية البصرية الجديدة؟<span class="fr">28. Quels résultats attendez-vous de la mission de communication et de création de la nouvelle identité visuelle ? *</span></div>
+        <div class="q-help">حددوا المخرجات المطلوبة، والآجال، ومعايير تقييم النجاح.<span class="fr">Précisez les livrables souhaités, les échéances et les critères d'évaluation de la réussite.</span></div>
+        <textarea name="q28" required placeholder="..."></textarea>
+        <div class="error-msg" id="err_q28">يرجى الإجابة على هذا السؤال / Veuillez répondre à cette question</div>
+      </div>
+
+      <div class="question required">
+        <div class="q-title">٢٩. معلومات التخطيط والتنفيذ<span class="fr">29. Informations de planification et mise en œuvre *</span></div>
+        <input type="text" name="q29_1" placeholder="٢٩.١. ميزانية إعداد الاستراتيجية وتصميم الهوية البصرية / Budget stratégie et identité visuelle *" style="margin-bottom:10px" required>
+        <input type="text" name="q29_2" placeholder="٢٩.٢. ميزانية تنفيذ أنشطة الاتصال / Budget mise en œuvre communication *" style="margin-bottom:10px" required>
+        <input type="text" name="q29_3" placeholder="٢٩.٣. الفريق المتاح والوقت الذي يمكن تخصيصه / Équipe disponible et temps mobilisable *" style="margin-bottom:10px" required>
+        <input type="text" name="q29_4" placeholder="٢٩.٤. الوظيفة أو المصلحة المكلفة بالمتابعة / Fonction chargée du suivi *" style="margin-bottom:10px" required>
+        <input type="text" name="q29_5" placeholder="٢٩.٥. الهيئة المكلفة باعتماد الاستراتيجية والشعار / Instance de validation *" style="margin-bottom:10px" required>
+        <input type="text" name="q29_6" placeholder="٢٩.٦. الآجال المقررة للاعتماد / Délais de validation *" style="margin-bottom:10px" required>
+        <input type="text" name="q29_7" placeholder="٢٩.٧. المواعيد الأساسية الواجب احترامها / Échéances essentielles *" required>
+        <div class="error-msg" id="err_q29">يرجى ملء جميع الحقول / Veuillez remplir tous les champs</div>
+      </div>
+    </div>
+
+    <!-- SECTION 8 -->
+    <div class="section-card fade-in" data-section="8">
+      <div class="section-header">
+        <div class="section-number">٨</div>
+        <div class="section-title">
+          <h2>مساهمتكم الإضافية<span class="fr-title">8. Votre contribution complémentaire</span></h2>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-title">٣٠. ما المعلومة أو الاقتراح الأساسي الذي تودون إضافته؟<span class="fr">30. Quelle information ou suggestion essentielle souhaitez-vous ajouter ?</span></div>
+        <textarea name="q30" placeholder="..."></textarea>
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="section-card fade-in" style="text-align:center;">
+      <div class="btn-row" style="justify-content:center;">
+        <button type="button" class="btn btn-submit" onclick="submitForm()">
+          <span>إرسال الاستبيان</span>
+          <span style="margin:0 8px;">|</span>
+          <span>Soumettre le questionnaire</span>
+        </button>
+      </div>
+      <p style="margin-top:20px; font-size:0.85rem; color:var(--gray-500);">
+        بالضغط على الإرسال، تؤكدون أن إجاباتكم لا تتضمن بيانات شخصية.<br>
+        <span style="direction:ltr;display:inline-block;">En soumettant, vous confirmez que vos réponses ne contiennent pas de données personnelles.</span>
+      </p>
+    </div>
+
+  </form>
+
+  <!-- Success Screen -->
+  <div class="success-screen hidden" id="successScreen">
+    <div class="success-icon">✓</div>
+    <h2>شكرًا على مساهمتكم</h2>
+    <p>ستساعد إجاباتكم في إعداد استراتيجية اتصال وهوية بصرية تتناسبان مع المنظمة وشبكتها.</p>
+    <h2 style="color:var(--teal); font-size:1.3rem; margin-top:24px;">Merci pour votre contribution</h2>
+    <p>Vos réponses aideront à construire une stratégie de communication et une identité visuelle adaptées à l'OAEDC et à son réseau.</p>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  const totalSections = 8;
+  let currentSection = 1;
+
+  const dotsContainer = document.getElementById('sectionDots');
+  for (let i = 1; i <= totalSections; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'section-dot' + (i === 1 ? ' active' : '');
+    dot.dataset.section = i;
+    dotsContainer.appendChild(dot);
+  }
+
+  function updateProgress() {
+    const sections = document.querySelectorAll('.section-card[data-section]');
+    const answered = Array.from(sections).filter(s => {
+      const inputs = s.querySelectorAll('input[type="text"], textarea');
+      const radios = s.querySelectorAll('input[type="radio"]:checked');
+      const checks = s.querySelectorAll('input[type="checkbox"]:checked');
+      return inputs.length > 0 || radios.length > 0 || checks.length > 0;
+    }).length;
+    const pct = Math.round((answered / totalSections) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressPercent').textContent = pct + '%';
+    document.getElementById('progressStep').textContent = currentSection + ' / ' + totalSections;
+
+    document.querySelectorAll('.section-dot').forEach((d, i) => {
+      d.classList.remove('active', 'completed');
+      if (i + 1 === currentSection) d.classList.add('active');
+      else if (i + 1 < currentSection) d.classList.add('completed');
+    });
+  }
+
+  document.querySelectorAll('.radio-option input[type="radio"]').forEach(r => {
+    r.addEventListener('change', function() {
+      const group = this.closest('.radio-group');
+      group.querySelectorAll('.radio-option').forEach(o => o.classList.remove('selected'));
+      this.closest('.radio-option').classList.add('selected');
+      updateProgress();
+    });
+  });
+
+  document.querySelectorAll('.checkbox-group').forEach(group => {
+    const max = parseInt(group.dataset.max || 99);
+    const name = group.dataset.name;
+    group.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', function() {
+        const checked = group.querySelectorAll('input[type="checkbox"]:checked');
+        if (checked.length > max) {
+          this.checked = false;
+          alert('الحد الأقصى: ' + max + ' إجابات / Maximum: ' + max + ' réponses');
+          return;
+        }
+        group.querySelectorAll('.checkbox-option').forEach(o => {
+          const inp = o.querySelector('input');
+          o.classList.toggle('selected', inp.checked);
+        });
+        updateProgress();
+      });
+    });
+  });
+
+  document.querySelectorAll('input[type="text"], textarea').forEach(el => {
+    el.addEventListener('input', updateProgress);
+  });
+
+  document.querySelectorAll('.grid-table input[type="radio"]').forEach(r => {
+    r.addEventListener('change', updateProgress);
+  });
+
+  function validateSection(num) {
+    const card = document.querySelector('.section-card[data-section="' + num + '"]');
+    if (!card) return true;
+    let valid = true;
+
+    card.querySelectorAll('.radio-group[data-required="true"]').forEach(group => {
+      const name = group.dataset.name;
+      const checked = group.querySelector('input:checked');
+      const err = document.getElementById('err_' + name);
+      if (!checked) {
+        if (err) err.classList.add('show');
+        valid = false;
+      } else {
+        if (err) err.classList.remove('show');
+      }
+    });
+
+    card.querySelectorAll('.checkbox-group[data-required="true"]').forEach(group => {
+      const name = group.dataset.name;
+      const checked = group.querySelectorAll('input:checked');
+      const err = document.getElementById('err_' + name);
+      if (checked.length === 0) {
+        if (err) err.classList.add('show');
+        valid = false;
+      } else {
+        if (err) err.classList.remove('show');
+      }
+    });
+
+    card.querySelectorAll('[required]').forEach(el => {
+      if (!el.value.trim()) {
+        valid = false;
+        const q = el.closest('.question');
+        if (q) {
+          const err = q.querySelector('.error-msg');
+          if (err) err.classList.add('show');
+        }
+      }
+    });
+
+    if (num === 5) {
+      for (let i = 1; i <= 6; i++) {
+        const checked = document.querySelector('input[name="g20_' + i + '"]:checked');
+        if (!checked) {
+          valid = false;
+          document.getElementById('err_q20').classList.add('show');
+          break;
+        }
+      }
+    }
+
+    return valid;
+  }
+
+  window.submitForm = function() {
+    let allValid = true;
+    for (let i = 1; i <= totalSections; i++) {
+      if (!validateSection(i)) {
+        allValid = false;
+        const card = document.querySelector('.section-card[data-section="' + i + '"]');
+        if (card) {
+          card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          break;
+        }
+      }
+    }
+
+    if (!allValid) {
+      alert('يرجى ملء جميع الحقول المطلوبة قبل الإرسال.\nVeuillez remplir tous les champs obligatoires avant de soumettre.');
+      return;
+    }
+
+    const formData = new FormData(document.getElementById('oedcForm'));
+    const data = {};
+    formData.forEach((v, k) => {
+      if (data[k]) {
+        if (Array.isArray(data[k])) data[k].push(v);
+        else data[k] = [data[k], v];
+      } else {
+        data[k] = v;
+      }
+    });
+
+    console.log('Form data:', data);
+
+    document.getElementById('oedcForm').classList.add('hidden');
+    document.getElementById('progressWrapper').classList.add('hidden');
+    document.getElementById('sectionDots').classList.add('hidden');
+    document.getElementById('introCard').classList.add('hidden');
+    document.getElementById('successScreen').classList.remove('hidden');
+    document.getElementById('successScreen').scrollIntoView({ behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  updateProgress();
+})();
+</script>
+
+</body>
+</html>
