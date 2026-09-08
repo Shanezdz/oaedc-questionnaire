@@ -1,26 +1,19 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: "Starter Project",
-  description: "A clean starting point for building your site.",
-  other: {
-    "codex-preview": "development",
-  },
+  title: "Questionnaire OAEDC",
+  description: "Questionnaire institutionnel bilingue arabe-français de l’OAEDC.",
   icons: {
     icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-  },
+    shortcut: "/favicon.svg"
+  }
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <body className="antialiased">{children}</body>
+    <html lang="ar" dir="rtl">
+      <body>{children}</body>
     </html>
   );
 }
