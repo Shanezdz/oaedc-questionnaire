@@ -43,7 +43,6 @@ La collecte exige une base D1 liée sous le nom `DB`, avec la migration `drizzle
 
 ## Hébergement
 
-Site actuel : https://oaedc-questionnaire.shanezdz.chatgpt.site
 
 Ce dépôt contient le code source et les ressources. Il ne contient ni réponses collectées, ni clés d’accès. Copier le dépôt ne copie pas la base de données. Aucune synchronisation automatique avec le site publié n’est configurée par ce transfert.
 
